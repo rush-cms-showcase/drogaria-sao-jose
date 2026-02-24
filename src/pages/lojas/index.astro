@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/layout.astro'
+import Header from '@/components/header.astro'
+import Footer from '@/components/footer.astro'
+import { units } from '@/data/units'
+import IconMapPin from '~icons/ph/map-pin-duotone'
+import IconPhone from '~icons/ph/phone-duotone'
+import IconWhatsapp from '~icons/mdi/whatsapp'
+---
+
+<Layout title="Nossas Lojas | Dutra Farma - Farmácia no Litoral Norte" description="Encontre a unidade da Dutra Farma mais próxima de você em Caraguatatuba e São Sebastião. Confira nossos endereços, telefones e horário de funcionamento.">
+  <Header />
+
+  <main class="flex-grow bg-slate-50 pt-16 pb-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Encontre a Dutra Farma <span class="text-red-600">mais perto</span> de você</h1>
+        <p class="mt-4 text-xl text-slate-600">
+          São 4 unidades estrategicamente localizadas para atender você e sua família com excelência e rapidez em Caraguá e São Sebastião.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {units.map((unit) => (
+          <a href={`/lojas/${unit.id}`} class="group flex flex-col bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl ring-1 ring-slate-200 hover:ring-red-200 transition-all hover:-translate-y-1">
+            <h2 class="text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-2">{unit.name}</h2>
+            <p class="text-slate-500 font-medium mb-6">{unit.city}, {unit.state}</p>
+            
+            <div class="space-y-4 mb-8 flex-grow">
+              <div class="flex items-start gap-3">
+                <IconMapPin class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                <span class="text-slate-700 leading-relaxed">{unit.address} - {unit.neighborhood}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <IconPhone class="w-6 h-6 text-slate-400 flex-shrink-0" />
+                <span class="text-slate-700 font-medium">{unit.phone}</span>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-sm font-semibold text-red-600 group-hover:text-red-700">Ver detalhes da loja &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
