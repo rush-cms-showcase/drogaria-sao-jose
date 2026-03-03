@@ -24,17 +24,38 @@ const { unit } = Astro.props
 </div>
 
 <script>
-	let isLeafletLoaded = false
+	let leafletPromise: Promise<any> | null = null
 
-	const loadLeafletDynamically = async () => {
-		if (isLeafletLoaded) return window.L
+	const loadLeafletDynamically = (): Promise<any> => {
+		if (leafletPromise) return leafletPromise
 
-		await import('leaflet/dist/leaflet.css')
-		const leafletModule = await import('leaflet')
-		window.L = leafletModule.default || leafletModule
-		isLeafletLoaded = true
+		leafletPromise = new Promise((resolve, reject) => {
+			// @ts-ignore
+			if (window.L) {
+				// @ts-ignore
+				return resolve(window.L)
+			}
 
-		return window.L
+			// Load CSS
+			const link = document.createElement('link')
+			link.rel = 'stylesheet'
+			link.href = '/vendor/leaflet/leaflet.css'
+			document.head.appendChild(link)
+
+			// Load JS
+			const script = document.createElement('script')
+			script.src = '/vendor/leaflet/leaflet.js'
+			script.onload = () => {
+				// @ts-ignore
+				resolve(window.L)
+			}
+			script.onerror = () => {
+				reject(new Error('Failed to load Leaflet JS'))
+			}
+			document.head.appendChild(script)
+		})
+
+		return leafletPromise
 	}
 
 	const initStoreMap = async (mapElement: HTMLElement) => {
