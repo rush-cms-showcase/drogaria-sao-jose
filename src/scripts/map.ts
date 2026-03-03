@@ -44,6 +44,13 @@ export const initMap = async () => {
 
 	const L = await loadLeafletDynamically()
 
+	// Clear existing map instance if navigating via SPA View Transitions
+	// @ts-ignore
+	if (L.DomUtil.get('hero-map') !== null) {
+		// @ts-ignore
+		L.DomUtil.get('hero-map')._leaflet_id = null
+	}
+
 	const map = L.map('hero-map', {
 		attributionControl: false,
 		scrollWheelZoom: false,

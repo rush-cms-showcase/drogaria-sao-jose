@@ -65,6 +65,13 @@ const { unit } = Astro.props
 
 		const L = await loadLeafletDynamically()
 
+		// Clear existing map instance if navigating via SPA View Transitions
+		// @ts-ignore
+		if (L.DomUtil.get('store-map') !== null) {
+			// @ts-ignore
+			L.DomUtil.get('store-map')._leaflet_id = null
+		}
+
 		const lat = parseFloat(mapElement.dataset.lat || '0')
 		const lng = parseFloat(mapElement.dataset.lng || '0')
 
