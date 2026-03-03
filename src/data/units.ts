@@ -10,7 +10,7 @@ export const units: Unit[] = [
 		state: 'SP',
 		phone: '(12) 3888-1043',
 		whatsapp: '5512988693437',
-		coordinates: [-23.6839641, -45.440392],
+		coordinates: [-23.685228998000213, -45.44010521286134],
 		maps_url: 'https://share.google/NvRRxvx6mF2vAALfn',
 	},
 	{
@@ -22,7 +22,7 @@ export const units: Unit[] = [
 		state: 'SP',
 		phone: '(12) 2122-3529',
 		whatsapp: '551238881809',
-		coordinates: [-23.6839641, -45.440392],
+		coordinates: [-23.701871407963203, -45.44462498490672],
 		maps_url: 'https://share.google/i4f1OD5Ih93V58ubK',
 	},
 	{
@@ -34,7 +34,7 @@ export const units: Unit[] = [
 		state: 'SP',
 		phone: '(12) 3861-3399',
 		whatsapp: '5512988747896',
-		coordinates: [-23.693814, -45.4569885],
+		coordinates: [-23.71186618115184, -45.4308827353062],
 		maps_url: 'https://share.google/NvRRxvx6mF2vAALfn',
 	},
 ]
