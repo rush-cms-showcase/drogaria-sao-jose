@@ -33,7 +33,7 @@ export const units: Unit[] = [
 		city: 'Caraguatatuba',
 		state: 'SP',
 		phone: '(12) 2122-3529',
-		whatsapp: '551238881809',
+		whatsapp: '5512997507768',
 		coordinates: [-23.701871407963203, -45.44462498490672],
 		maps_url: 'https://share.google/i4f1OD5Ih93V58ubK',
 	},
